@@ -13,7 +13,6 @@ app = Flask(__name__)
 
 def gfg():
     if request.method == "POST":
-       # getting input with name = fname in HTML form
        urlLink = request.form.get("url")
        nltk.download('punkt')
        article = Article(urlLink)
