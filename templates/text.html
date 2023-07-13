@@ -8,8 +8,80 @@
 
 <!-- BODY -->
 {% block body %} 
-<form action="{{ url_for('text')}}" method="post">
+
+<header>
+    <div class="navLogo">
+        <img src="../static/image/logo.png" alt="Cummarize" class="nav_logo"/>  
+    </div>
+    <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <nav class="nav-bar">
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Text</a></li>
+            <li><a href="#">Video</a></li>
+            <li><a href="#">Audio</a></li>
+        </ul>
+    </nav>
+    <script>
+        hamburger = document.querySelector(".hamburger");
+        hamburger.onclick = function () {
+        navBar = document.querySelector(".nav-bar")
+        navBar.classList.toggle("active");
+        }
+    </script>
+</header>
+
+<div class="text-page">
+    <div class="leftRight">
+        <div class="text-summarizer">
+            <div class="title">
+                <div class="title-01">WELCOME TO CUMMARIZE</div>
+                <div class="title-02">Text Summarizer</div>
+                <div class="title-01">Online Summarizer developed & supported</div>
+                <div class="title-01">by Bina Nusantara University</div>
+                <div class="form">
+                    <form action="{{ url_for('text')}}" method="post">
+                    <label id= "warna" for="url">URL :</label>
+                    <input type="text" name="url" placeholder="URL">
+                </div>
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+        <div class="text-image">
+            <img src="../static/image/welcome-image.png" alt="welcome-image" class="icon"/>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer">
+        <h1 class="reachUs">Reach Us</h1>
+        <div class="tagLine">Cummarize. always happy to look for ways to improve your experience. Dont forget to follow and send us your feedback to Cummarize. Your comments and suggestions are greatly appreciated!</div>
+        <div class="text-box">
+            <div class="text-01">feedback@Cummarize.com</div>
+            <div class="text-02">Please provide your feedback for Vibey</div>
+        </div>
+        <div class="text-box">
+            <div class="text-01">support@Cummarize.com</div>
+            <div class="text-02">For help, please contact Cummarize Technical Support.</div>
+        </div>
+        <div class="text-box">
+            <div class="text-01">press@Cummarize.com</div>
+            <div class="text-02">For PR inquiries, please contact our PR Team.</div>
+        </div>
+        <div class="text-box">
+            <div class="text-01">BD@Cummarize.com</div>
+            <div class="text-02">For business inquiries, please contact our BD Team.</div>
+        </div>
+    </div>
+</footer>
+
+<!-- <form action="{{ url_for('text')}}" method="post">
 <label id= "warna" for="url">URL :</label>
 <input type="text" name="url" placeholder="URL">
-<button type="submit">Submit</button>
+<button type="submit">Submit</button> -->
 {% endblock %}
