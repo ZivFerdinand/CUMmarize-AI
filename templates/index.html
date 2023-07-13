@@ -3,13 +3,13 @@
 
 <!-- HEAD -->
 {% block head %} 
-
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
 {% endblock %}
 
 <!-- BODY -->
 {% block body %} 
 <form action="{{ url_for('gfg')}}" method="post">
-<label for="url">URL :</label>
+<label id= "warna" for="url">URL :</label>
 <input type="text" name="url" placeholder="URL">
 <button type="submit">Submit</button>
 {% endblock %}
