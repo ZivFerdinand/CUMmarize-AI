@@ -8,9 +8,6 @@ app = Flask(__name__)
 
 @app.route('/', methods =["GET", "POST"])
 
-# def home():
-#     return render_template("index.html")
-
 def gfg():
     if request.method == "POST":
        urlLink = request.form.get("url")
@@ -19,8 +16,8 @@ def gfg():
        article.download()
        article.parse()
        article.nlp()
-       return "This is your summary <br></br>" + article.summary
-    return render_template("form.html")
+       return "Title : " + article.title + "<br>" + "Authors : " + str(article.authors) + "<br>" + "Publication Date : " + str(article.publish_date) + "<br> </br>" + "Summary : <br>" + article.summary
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
