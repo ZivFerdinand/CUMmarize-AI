@@ -26,3 +26,10 @@ def text():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+# import whisper
+
+# model = whisper.load_model("medium")
+# result = model.transcribe("C:\\Users\\bcamaster\\OneDrive\\Documents\\Code\\Code Cawu 3\\CUMmarize-AI\\18.mp4")
+
+# print(result["text"])
