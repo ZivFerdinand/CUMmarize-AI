@@ -119,7 +119,7 @@ header{
     }
 }
 
-.welcome-page{
+.text-page{
     position: static;
     background-image: url(../image/welcome-background.png);
     background-position: center;
@@ -168,26 +168,6 @@ header{
     font-size: 50px;
     color: white;
 }
-/* 
-.options-button{
-    margin-top: 10px;
-    margin-right: 3%;
-    background : white;
-    border-radius: 20px;
-    padding : 10px 30px;
-    border: none;
-}
-
-.options{
-    display: flex;
-    flex-direction: row;
-}
-
-.options a{
-    font-family: 'FontCummarize';
-    color: #2A598B;
-    font-size: 15px;
-} */
 
 .welcome-image{
     width: 40%;
@@ -202,3 +182,53 @@ header{
     width: 100%;
     height: 85%;
 } 
+
+footer{
+    position: relative;
+    background: linear-gradient(0deg, #2A598B 97.19%, rgba(255, 255, 255, 0.83) 100%);
+    width: 100%;
+    height: 350px;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+}
+
+.reachUs{
+    margin-top: 3.5%;
+    margin-left: 2%;
+    font-family: Arial,Helvetica,'Heiti SC','Microsoft Yahei',simsun,sans-serif;    font-size: 20px;
+    color: white;
+    font-style: bold;
+}
+
+.tagLine{
+    margin: 1%;
+    margin-left: 2%;
+    width: 43%;
+    font-family: Arial,Helvetica,'Heiti SC','Microsoft Yahei',simsun,sans-serif;    font-size: 20px;
+    font-size: 15px;
+    color: white;
+}
+
+.text-box{
+    width: 100%;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.text-01{
+    margin-left: 2%;
+    font-family: Arial,Helvetica,'Heiti SC','Microsoft Yahei',simsun,sans-serif;    font-size: 20px;
+    font-size: 13.5px;
+    color: white;
+    opacity: 50%;
+}
+
+.text-02{
+    margin-left: 2%;
+    font-family: Arial,Helvetica,'Heiti SC','Microsoft Yahei',simsun,sans-serif;    font-size: 20px;
+    font-size: 13.5px;
+    color: #7D7D7D;
+}
