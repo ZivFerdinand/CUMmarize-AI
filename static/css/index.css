@@ -194,6 +194,15 @@ header{
     font-size: 15px;
 }
 
+.options-button:hover{
+    background : transparent;
+    border: #fff;
+    border-color: white;
+}
+.options a:hover{
+    color: white;
+}
+
 .welcome-image{
     width: 40%;
     height: 100%;

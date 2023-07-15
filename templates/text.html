@@ -8,7 +8,6 @@
 
 <!-- BODY -->
 {% block body %} 
-
 <header>
     <div class="navLogo">
         <img src="../static/image/logo.png" alt="Cummarize" class="nav_logo"/>  
@@ -43,12 +42,11 @@
                 <div class="title-02">Text Summarizer</div>
                 <div class="title-01">Online Summarizer developed &amp supported</div>
                 <div class="title-01">by Bina Nusantara University</div>
-                <div class="form">
+                <div class="form1">
                     <form action="{{ url_for('text')}}" method="post">
-                    <label id= "warna" for="url">URL :</label>
-                    <input type="text" name="url" placeholder="URL">
+                    <input class="textInput" type="text" name="url" placeholder="Paste here the link you want to summarize">
                 </div>
-                <button type="submit">Submit</button>
+                <button class ="buttonSumbit" type="submit">CUMMARIZE</button>
             </div>
         </div>
         <div class="text-image">
@@ -56,6 +54,10 @@
         </div>
     </div>
 </div>
+
+<div class="summarize-text">
+    <div class="summarize">Summarize Text</div>
+ </div>
 
 <footer>
     <div class="footer">
@@ -78,7 +80,7 @@
             <div class="text-02">For business inquiries, please contact our BD Team.</div>
         </div>
     </div>
-</footer>
+</footer> 
 
 <!-- <form action="{{ url_for('text')}}" method="post">
 <label id= "warna" for="url">URL :</label>
