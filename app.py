@@ -2,9 +2,23 @@ import nltk
 from newspaper import Article
 from nltk_summarization import nltk_summarizer, readingTime
 import time
+import whisper
 
 from flask import Flask, render_template, request
+from flask_wtf import FlaskForm
+from wtforms import FileField, SubmitField
+from werkzeug.utils import secure_filename
+from wtforms.validators import InputRequired
+import os, shutil
 app = Flask(__name__)
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'supersecretkey'
+app.config['UPLOAD_FOLDER'] = 'static/files'
+
+class UploadFileForm(FlaskForm):
+    file = FileField("File", validators=[InputRequired()])
+    submit = SubmitField("Upload File")
 
 @app.route('/', methods =["GET", "POST"])
 def home():
@@ -31,12 +45,28 @@ def text():
         return render_template('result.html',ctext=rawtext,final_summary=final_summary,final_time=final_time,final_reading_time=final_reading_time,summary_reading_time=summary_reading_time)
     return render_template("text.html")
 
+@app.route('/audio', methods=['GET',"POST"])
+def audio():  
+    folder = 'static/files'
+    for filename in os.listdir(folder):
+        file_path = os.path.join(folder, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+        except Exception as e:
+            print('Failed to delete %s. Reason: %s' % (file_path, e))
+    form = UploadFileForm()
+    if form.validate_on_submit():
+        file = form.file.data # First grab the file
+        save_path = os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'],secure_filename(file.filename))
+        file.save(save_path) # Then save the file
+        
+        model = whisper.load_model("base")
+        result = model.transcribe(save_path)
+        return result["text"]
+    return render_template('audio.html', form=form)
+
 if __name__ == "__main__":
     app.run(debug=True)
-
-# import whisper
-
-# model = whisper.load_model("medium")
-# result = model.transcribe("C:\\Users\\bcamaster\\OneDrive\\Documents\\Code\\Code Cawu 3\\CUMmarize-AI\\18.mp4")
-
-# print(result["text"])

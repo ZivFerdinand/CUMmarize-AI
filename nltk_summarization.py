@@ -4,7 +4,7 @@ import spacy
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
 
-nltk.download('stopwords')
+# nltk.download('stopwords')
 nlp = spacy.load('en_core_web_sm')
 
 def nltk_summarizer(raw_text):
