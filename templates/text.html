@@ -43,13 +43,11 @@
                 <div class="title-02">Text Summarizer</div>
                 <div class="title-01">Online Summarizer developed &amp supported</div>
                 <div class="title-01">by Bina Nusantara University</div>
-                <div class="form">
+                <div class="form1">
                     <form action="{{ url_for('text')}}" method="post">
-                    <label id= "warna" for="url">URL :</label>
-                    <input type="text" name="url" placeholder="URL">
-                    <button value="url" name="button"type="submit">Submit</button>
+                    <input class ="textInput" type="text" name="url" placeholder="Paste here the link you want to summarize">
                 </div>
-            
+                <button class = "buttonSubmit" value="url" name="button" type="submit"><a href="#">CUMMARIZE</a></button>
             </div>
         </div>
         <div class="text-image">
@@ -58,13 +56,12 @@
     </div>
 </div>
 
+<div class="summarize-text">
+    <div class="summarize">Summarize Text</div>
     <form method="POST" action="/analyze">
-    <textarea name="rawtext" cols="3" rows="5" class="form-control" placeholder="Enter Text Here">    
-    </textarea>
-    <br/>
-    <button class="btn btn-small waves-effect waves-light light-blue lighten-1" type="reset">Clear</button>
-    <button name="button" value="rawtext" class="btn btn-small waves-effect waves-light purple lighten-1" type="submit">Summarize</button>
-
+        <textarea name="rawtext" cols="3" rows="5" class="formText" placeholder="Copy and paste your text here"></textarea>
+        <button name="button" value="rawtext" class="buttonSum" type="submit"><a href="#">CUMMARIZE</a></button>    
+    </div>
 <footer>
     <div class="footer">
         <h1 class="reachUs">Reach Us</h1>

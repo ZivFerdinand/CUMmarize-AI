@@ -205,15 +205,18 @@ form{
     font-family: 'FontCummarize';
 }
 
-.buttonSumbit{
+.buttonSubmit{
     background: #1B44C0;
-    color: white;
     border: none;
-    font-family: 'FontCummarize';
     font-size: 12pt;
     width: 24%;
     height: 20%;
     border-radius: 20px;
+}
+
+.buttonSubmit a{
+    color: white;
+    font-family: 'FontCummarize';
 }
 
 .summarize-text{
@@ -228,9 +231,40 @@ form{
 
 .summarize{
     margin-top: 100px;
+    margin-bottom: 1%;
     font-family: 'FontCummarize';
     font-size: 50px;
     color: #2A598B;
+}
+
+.formText{
+    resize: none;
+    width: 70%;
+    height: 60%;
+    background: transparent;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #1BD1FE;
+    color: black;
+    font-family: 'FontCummarize';
+    padding-left: 45px;
+    padding-top: 30px;
+}
+
+.buttonSum a{
+    color: white;
+    font-family: 'FontCummarize';
+}
+
+.buttonSum{
+    background: #1B44C0;
+    border: none;
+    font-size: 12pt;
+    width: 10%;
+    height: 7%;
+    border-radius: 20px;
+    margin-top: 2%;
 }
 
 footer{
@@ -249,6 +283,7 @@ footer{
     font-family: Arial,Helvetica,'Heiti SC','Microsoft Yahei',simsun,sans-serif;    font-size: 20px;
     color: white;
     font-style: bold;
+    opacity: 50%;
 }
 
 .tagLine{
@@ -258,6 +293,7 @@ footer{
     font-family: Arial,Helvetica,'Heiti SC','Microsoft Yahei',simsun,sans-serif;    font-size: 20px;
     font-size: 15px;
     color: white;
+    opacity: 50%;
 }
 
 .text-box{

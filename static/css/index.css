@@ -233,6 +233,7 @@ footer{
     font-family: Arial,Helvetica,'Heiti SC','Microsoft Yahei',simsun,sans-serif;    font-size: 20px;
     color: white;
     font-style: bold;
+    opacity: 50%;
 }
 
 .tagLine{
@@ -242,6 +243,7 @@ footer{
     font-family: Arial,Helvetica,'Heiti SC','Microsoft Yahei',simsun,sans-serif;    font-size: 20px;
     font-size: 15px;
     color: white;
+    opacity: 50%;
 }
 
 .text-box{
