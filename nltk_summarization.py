@@ -1,7 +1,11 @@
 import nltk
+import heapq  
+import spacy
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize, sent_tokenize
-import heapq  
+
+nltk.download('stopwords')
+nlp = spacy.load('en_core_web_sm')
 
 def nltk_summarizer(raw_text):
     stopWords = set(stopwords.words("english"))
@@ -35,3 +39,8 @@ def nltk_summarizer(raw_text):
 
     summary = ' '.join(summary_sentences)  
     return summary
+
+def readingTime(mytext):
+    total_words = len([ token.text for token in nlp(mytext)])
+    estimatedTime = total_words/200.0
+    return estimatedTime
