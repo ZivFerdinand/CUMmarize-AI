@@ -22,7 +22,8 @@ def analyze():
 
 @app.route('/text', methods =["GET", "POST"])
 def text():
-    if request.method == "POST":
+    start = time.time()
+    if request.method == "POST" and request.form.get("button") == "url":
        urlLink = request.form.get("url")
        nltk.download('punkt')
        article = Article(urlLink)
@@ -30,23 +31,21 @@ def text():
        article.parse()
        article.nlp()
        return "Title : " + article.title + "<br>" + "Authors : " + str(article.authors) + "<br>" + "Publication Date : " + str(article.publish_date) + "<br> </br>" + "Summary : <br>" + article.summary
+    elif request.method == 'POST' and request.form.get("button") == "rawtext":
+        rawtext = request.form['rawtext']
+        final_reading_time = readingTime(rawtext)
+        final_summary = nltk_summarizer(rawtext)
+        summary_reading_time = readingTime(final_summary)
+        end = time.time()
+        final_time = end-start
+        return render_template('result.html',ctext=rawtext,final_summary=final_summary,final_time=final_time,final_reading_time=final_reading_time,summary_reading_time=summary_reading_time)
+    
     return render_template("text.html")
 
-def analyze():
-	start = time.time()
-	if request.method == 'POST':
-		rawtext = request.form['rawtext']
-		final_reading_time = readingTime(rawtext)
-		final_summary = nltk_summarizer(rawtext)
-		summary_reading_time = readingTime(final_summary)
-		end = time.time()
-		final_time = end-start
-	return render_template('result.html',ctext=rawtext,final_summary=final_summary,final_time=final_time,final_reading_time=final_reading_time,summary_reading_time=summary_reading_time)
-
 def readingTime(mytext):
-	total_words = len([ token.text for token in nlp(mytext)])
-	estimatedTime = total_words/200.0
-	return estimatedTime
+    total_words = len([ token.text for token in nlp(mytext)])
+    estimatedTime = total_words/200.0
+    return estimatedTime
 
 if __name__ == "__main__":
     app.run(debug=True)
