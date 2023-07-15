@@ -44,7 +44,15 @@
                 <div class="title-01">by Bina Nusantara University</div>
                 <div class="form1">
                     <form action="{{ url_for('text')}}" method="post">
-                    <input class="textInput" type="text" name="url" placeholder="Paste here the link you want to summarize">
+                    <label id= "warna" for="url">URL :</label>
+                    <input type="text" name="url" placeholder="URL">
+
+                    <form method="POST" action="/analyze">
+                    <textarea name="rawtext" cols="3" rows="5" class="form-control" required="true" placeholder="Enter Text Here">    
+                    </textarea>
+                    <br/>
+                    <button class="btn btn-small waves-effect waves-light light-blue lighten-1" type="reset">Clear</button>
+                    <button class="btn btn-small waves-effect waves-light purple lighten-1" type="submit">Summarize</button>
                 </div>
                 <button class ="buttonSumbit" type="submit">CUMMARIZE</button>
             </div>
