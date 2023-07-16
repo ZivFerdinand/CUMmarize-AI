@@ -1,16 +1,11 @@
-import nltk
-from newspaper import Article
-from nltk_summarization import nltk_summarizer, readingTime
-import time
-import whisper
-
-from flask import Flask, render_template, request
-from flask_wtf import FlaskForm
-from wtforms import FileField, SubmitField
-from werkzeug.utils import secure_filename
-from wtforms.validators import InputRequired
-import os, shutil
-app = Flask(__name__)
+import nltk, time, whisper, os, shutil
+from newspaper              import Article
+from flask_wtf              import FlaskForm
+from werkzeug.utils         import secure_filename
+from wtforms                import FileField, SubmitField
+from wtforms.validators     import InputRequired
+from flask                  import Flask, render_template, request
+from nltk_summarization     import nltk_summarizer, readingTime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecretkey'
@@ -28,21 +23,35 @@ def home():
 def text():
     start = time.time()
     if request.method == "POST" and request.form.get("button") == "url":
-        urlLink = request.form.get("url")
-        nltk.download('punkt')
-        article = Article(urlLink)
-        article.download()
-        article.parse()
-        article.nlp()
-        return "Title : " + article.title + "<br>" + "Authors : " + str(article.authors) + "<br>" + "Publication Date : " + str(article.publish_date) + "<br> </br>" + "Summary : <br>" + article.summary
+        try:
+            urlLink = request.form.get("url")
+            nltk.download('punkt')
+            article = Article(urlLink)
+            article.download()
+            article.parse()
+            article.nlp()
+        except:
+            return render_template('text.html', error_msg="Invalid Link Provided!")
+        else:
+            return "Title : " + article.title + "<br>" + "Authors : " + str(article.authors) + "<br>" + "Publication Date : " + str(article.publish_date) + "<br> </br>" + "Summary : <br>" + article.summary
     elif request.method == 'POST' and request.form.get("button") == "rawtext":
-        rawtext = request.form['rawtext']
-        final_reading_time = readingTime(rawtext)
-        final_summary = nltk_summarizer(rawtext)
-        summary_reading_time = readingTime(final_summary)
-        end = time.time()
-        final_time = end-start
-        return render_template('result.html',ctext=rawtext,final_summary=final_summary,final_time=final_time,final_reading_time=final_reading_time,summary_reading_time=summary_reading_time)
+        try:
+            rawtext = request.form['rawtext']
+            final_reading_time = readingTime(rawtext)
+            final_summary = nltk_summarizer(rawtext)
+            summary_reading_time = readingTime(final_summary)
+            end = time.time()
+            final_time = end-start
+        except:
+            return render_template('text.html', error_msg_2="Invalid Text Provided!")
+        else:
+            return render_template('result.html',
+                ctext=rawtext,
+                final_summary=final_summary,
+                final_time=final_time,
+                final_reading_time=final_reading_time,
+                summary_reading_time=summary_reading_time
+                )
     return render_template("text.html")
 
 @app.route('/audio', methods=['GET',"POST"])
