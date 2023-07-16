@@ -41,7 +41,11 @@
                     <input class ="textInput" type="text" name="url" placeholder="Paste here the link you want to summarize">
                 </div>
                 <div class="errorMSG">{{ error_msg }}</div>
-                <button class = "buttonSubmit" value="url" name="button" type="submit">CUMMARIZE</button>
+                <div style="align-items: center; display: flex; flex-direction: row; width: 100%; height: 100%; ">
+                    <button id="urlSubmitButton" style="margin-right: 25px;" class = "buttonSubmit" value="url" name="button" type="submit">CUMMARIZE</button>
+                    <div id="urlLoader" class="loader"></div>
+                </div>
+                
             </div>
         </div>
         <div class="text-image">
@@ -55,7 +59,10 @@
     <form method="POST" action="/analyze">
     <textarea name="rawtext" cols="3" rows="5" class="formText" placeholder="Copy and paste your text here"></textarea>
     <div class="errorMSG">{{ error_msg_2 }}</div>
-    <button name="button" value="rawtext" class="buttonSubmit" type="submit">CUMMARIZE</button>    
+    <div style="align-items: center; display: flex; flex-direction: row; ">
+        <button id="textSubmitButton" style="margin-right: 25px;" name="button" value="rawtext" class="buttonSubmit" type="submit">CUMMARIZE</button>
+        <div id="textLoader" class="loader"></div>
+    </div>    
 </div>
 <footer>
     <div class="footer">
@@ -142,6 +149,20 @@
     })
     video.addEventListener("mouseleave", () => {
         activateClass();
+    })
+
+    let urlLoader = document.getElementById("urlLoader");
+    let urlSubmitButton = document.getElementById("urlSubmitButton");
+
+    urlSubmitButton.addEventListener("click", () => {
+        urlLoader.style.display = "flex";
+    })
+
+    let textLoader = document.getElementById("textLoader");
+    let textSubmitButton = document.getElementById("textSubmitButton");
+
+    textSubmitButton.addEventListener("click", () => {
+        textLoader.style.display = "flex";
     })
 </script>
 {% endblock %}
