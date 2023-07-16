@@ -16,16 +16,7 @@
     src: url(../font/traffic5.ttf);
 }
 
-header{
-    width: 100%;
-    height: 80px;
-    background: linear-gradient(180deg, rgba(35, 39, 193, 0.43) 0%, rgba(62, 63, 108, 0.28) 43.75%, rgba(0, 0, 13, 0.15) 72.40%, rgba(17, 22, 217, 0.20) 100%);;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding:  0 100px;
-    position: fixed;
-}
+
 
 .nav_logo{
     height: 75px;
@@ -34,7 +25,7 @@ header{
 }
 
 .nav_logo:hover{
-    filter: drop-shadow(0px 0px 4px white);
+    filter: drop-shadow(0px 0px 2px white);
 }
 
 .hamburger{
@@ -45,7 +36,7 @@ header{
     display: flex;
 }
 
-.nav-bar ul li a{
+.nav-bar ul li a.inactive{
     display: block;
     color: white;
     font-size: 15px;
@@ -63,9 +54,16 @@ header{
 }
 
 .nav-bar ul li a.active{
+    display: block;
+    color: white;
+    font-size: 15px;
+    font-family: 'FontCummarize';
+    padding: 10px 25px;
+    transition: 0.2s;
+    margin: 0 5px;
+    opacity: 50%;
     color: white;
     opacity: 100%;
-    text-decoration: underline;
     text-shadow: 1px 1px 10px #fff, 1px 1px 10px #ccc;
 }
 
@@ -125,6 +123,7 @@ header{
 }
 
 .welcome-page{
+    z-index: 1000;
     position: static;
     background-image: url(../image/welcome-background.png);
     background-position: center;
@@ -146,7 +145,7 @@ header{
 }
 
 .welcome-text{
-    width: 60%;
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -154,10 +153,11 @@ header{
 }
 
 .title{
-    left: 90%;
-    width: 70%;
+    margin-left: 100px;
+    width: 100%;
     height: 40%;
     display: flex;
+    z-index: 50;
     justify-content: center;
     flex-direction: column;
 }
@@ -174,16 +174,8 @@ header{
     color: white;
 }
 
-.options-button{
-    margin-top: 10px;
-    margin-right: 3%;
-    background : white;
-    border-radius: 20px;
-    padding : 10px 30px;
-    border: none;
-}
-
 .options{
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
 }
@@ -192,15 +184,20 @@ header{
     font-family: 'FontCummarize';
     color: #2A598B;
     font-size: 15px;
+    text-align: center;
+    line-height: 15px;
+    justify-content: center;
+    background: white;
+    padding : 10px 30px;
+    border-radius: 20px;
+    margin-right: 20px;
+    border: solid white;
 }
 
-.options-button:hover{
-    background : transparent;
-    border: #fff;
-    border-color: white;
-}
 .options a:hover{
+    transition: .5s;
     color: white;
+    background: transparent;
 }
 
 .welcome-image{
@@ -212,24 +209,33 @@ header{
 }
 
 .icon{
-    margin-top: 62px;
-    width: 100%;
+    margin-top: -20vh;
+    margin-right: 100px;
+    /* width: 85%; */
     height: 85%;
+    z-index: 50;
 } 
 
 footer{
+    z-index: 0;
+    margin-top: -20%;
     position: relative;
-    background: linear-gradient(0deg, #2A598B 97.19%, rgba(255, 255, 255, 0.83) 100%);
+    /* background: linear-gradient(0deg, #2A598B 97.19%, rgba(255, 255, 255, 0.83) 100%); */
+    background: linear-gradient(to bottom, 
+                                rgba(255,255,255,0) 0%, 
+                                #2A598B 42.5%); 
+    /* background: red; */
     width: 100%;
-    height: 350px;
+    /* height: calc(100% + 100px); */
+    height: 100vh;
     color: #ffffff;
     display: flex;
     flex-direction: column;
 }
 
 .reachUs{
-    margin-top: 3.5%;
-    margin-left: 2%;
+    margin-top: 23.5%;
+    margin-left: 100px;
     font-family: Arial,Helvetica,'Heiti SC','Microsoft Yahei',simsun,sans-serif;    font-size: 20px;
     color: white;
     font-style: bold;
@@ -238,7 +244,7 @@ footer{
 
 .tagLine{
     margin: 1%;
-    margin-left: 2%;
+    margin-left: 100px;
     width: 43%;
     font-family: Arial,Helvetica,'Heiti SC','Microsoft Yahei',simsun,sans-serif;    font-size: 20px;
     font-size: 15px;
@@ -247,26 +253,29 @@ footer{
 }
 
 .text-box{
-    width: 100%;
+    width: calc(100% -100px);
     height: 35px;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    margin-left: 100px;
 }
 
 .text-01{
-    margin-left: 2%;
+    /* margin-left: 2%; */
     font-family: Arial,Helvetica,'Heiti SC','Microsoft Yahei',simsun,sans-serif;    font-size: 20px;
     font-size: 13.5px;
     color: white;
+    width: 100%;
     opacity: 50%;
 }
 
 .text-02{
-    margin-left: 2%;
+    /* margin-left: 2%; */
     font-family: Arial,Helvetica,'Heiti SC','Microsoft Yahei',simsun,sans-serif;    font-size: 20px;
     font-size: 13.5px;
     color: #7D7D7D;
+    width: 100%;
 }
 
 

@@ -11,16 +11,7 @@
     src: url(../font/traffic5.ttf);
 }
 
-header{
-    width: 100%;
-    height: 80px;
-    background: linear-gradient(180deg, rgba(35, 39, 193, 0.43) 0%, rgba(62, 63, 108, 0.28) 43.75%, rgba(0, 0, 13, 0.15) 72.40%, rgba(17, 22, 217, 0.20) 100%);;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding:  0 100px;
-    position: fixed;
-}
+
 
 .nav_logo{
     height: 75px;
