@@ -40,6 +40,7 @@
                     <form action="{{ url_for('text')}}" method="post">
                     <input class ="textInput" type="text" name="url" placeholder="Paste here the link you want to summarize">
                 </div>
+                <div class="errorMSG">{{ error_msg }}</div>
                 <button class = "buttonSubmit" value="url" name="button" type="submit">CUMMARIZE</button>
             </div>
         </div>
@@ -53,6 +54,7 @@
     <div class="summarize">Summarize Text</div>
     <form method="POST" action="/analyze">
     <textarea name="rawtext" cols="3" rows="5" class="formText" placeholder="Copy and paste your text here"></textarea>
+    <div class="errorMSG">{{ error_msg_2 }}</div>
     <button name="button" value="rawtext" class="buttonSubmit" type="submit">CUMMARIZE</button>    
 </div>
 <footer>
