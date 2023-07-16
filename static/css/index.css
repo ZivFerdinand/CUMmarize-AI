@@ -44,7 +44,7 @@
     padding: 10px 25px;
     transition: 0.2s;
     margin: 0 5px;
-    opacity: 50%;
+    opacity: 75%;
 }
 
 .nav-bar ul li a:hover{
@@ -214,6 +214,7 @@
     /* width: 85%; */
     height: 85%;
     z-index: 50;
+    opacity: 85%;
 } 
 
 footer{
