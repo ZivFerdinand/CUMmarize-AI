@@ -9,7 +9,7 @@
 <!-- BODY -->
 {% block body %} 
 
-<header>
+<header id="hd">
     <div class="navLogo">
         <img src="../static/image/logo.png" alt="Cummarize" class="nav_logo"/>  
     </div>
@@ -20,19 +20,12 @@
     </div>
     <nav class="nav-bar">
         <ul>
-            <li><a href="/" >Home</a></li>
-            <li><a href="text" class="active">Text</a></li>
-            <li><a href="#">Video</a></li>
-            <li><a href="#">Audio</a></li>
+            <li><a id="home" class="inactive" href="/" >Home</a></li>
+            <li><a id="text" class="active" href="text">Text</a></li>
+            <li><a id="video" class="inactive" href="#">Video</a></li>
+            <li><a id="audio" class="inactive" href="#">Audio</a></li>
         </ul>
     </nav>
-    <script>
-        hamburger = document.querySelector(".hamburger");
-        hamburger.onclick = function () {
-        navBar = document.querySelector(".nav-bar")
-        navBar.classList.toggle("active");
-        }
-    </script>
 </header>
 
 <div class="text-page">
@@ -59,9 +52,9 @@
 <div class="summarize-text">
     <div class="summarize">Summarize Text</div>
     <form method="POST" action="/analyze">
-        <textarea name="rawtext" cols="3" rows="5" class="formText" placeholder="Copy and paste your text here"></textarea>
-        <button name="button" value="rawtext" class="buttonSum" type="submit">CUMMARIZE</button>    
-    </div>
+    <textarea name="rawtext" cols="3" rows="5" class="formText" placeholder="Copy and paste your text here"></textarea>
+    <button name="button" value="rawtext" class="buttonSubmit" type="submit">CUMMARIZE</button>    
+</div>
 <footer>
     <div class="footer">
         <h1 class="reachUs">Reach Us</h1>
@@ -85,8 +78,68 @@
     </div>
 </footer>
 
-<!-- <form action="{{ url_for('text')}}" method="post">
-<label id= "warna" for="url">URL :</label>
-<input type="text" name="url" placeholder="URL">
-<button type="submit">Submit</button> -->
+<script>
+    hamburger = document.querySelector(".hamburger");
+    hamburger.onclick = function () {
+        navBar = document.querySelector(".nav-bar")
+        navBar.classList.toggle("active");
+    }
+    let hdr = document.getElementById("hd");
+    window.addEventListener("scroll", (event) => {
+        let scroll = this.scrollY;
+        if(scroll == 0)
+        {   
+            if(hdr.classList.contains("hd-bg") == true)
+            {
+                hdr.classList.remove("hd-bg")
+            }
+        }
+        else
+        {
+            if(hdr.classList.contains("hd-bg") == false)
+            {
+                hdr.classList.add("hd-bg")
+            }
+        }
+    });
+    const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+    let home = document.getElementById("home");
+    let text = document.getElementById("text");
+    let audio = document.getElementById("audio");
+    let video = document.getElementById("video");
+
+    function disactivateClass() {
+        if (text.classList.contains("active") == true) {
+            text.classList.remove("active");
+            text.classList.add("inactive");
+            
+        }
+    }
+    function activateClass() {
+        if (text.classList.contains("inactive") == true) {
+            text.classList.add("active");
+            text.classList.remove("inactive");
+        }
+    }
+    home.addEventListener("mouseenter", () => {
+        disactivateClass();
+    })
+    home.addEventListener("mouseleave", () => {
+        activateClass();
+    })
+
+    audio.addEventListener("mouseenter", () => {
+        disactivateClass();
+    })
+    audio.addEventListener("mouseleave", () => {
+        activateClass();
+    })
+
+    video.addEventListener("mouseenter", () => {
+        disactivateClass();
+    })
+    video.addEventListener("mouseleave", () => {
+        activateClass();
+    })
+</script>
 {% endblock %}

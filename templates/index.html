@@ -9,7 +9,7 @@
 <!-- BODY -->
 {% block body %} 
 <!-- <p align="center"><a href="text"><button style="height:75px;width:150px">TEXT SUMMARIZER</button></a></p> -->
-<header>
+<header id="hd">
     <div class="navLogo">
         <img src="../static/image/logo.png" alt="Cummarize" class="nav_logo"/>  
     </div>
@@ -82,6 +82,24 @@
         navBar.classList.toggle("active");
     }
 
+    let hdr = document.getElementById("hd");
+    window.addEventListener("scroll", (event) => {
+        let scroll = this.scrollY;
+        if(scroll == 0)
+        {   
+            if(hdr.classList.contains("hd-bg") == true)
+            {
+                hdr.classList.remove("hd-bg")
+            }
+        }
+        else
+        {
+            if(hdr.classList.contains("hd-bg") == false)
+            {
+                hdr.classList.add("hd-bg")
+            }
+        }
+    });
     const delay = (ms) => new Promise((res) => setTimeout(res, ms));
     let home = document.getElementById("home");
     let text = document.getElementById("text");
