@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cummarize</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css')}}">
-
-    {% block head %}{% endblock %}
-</head>
-<body>
-    {% block body %}{% endblock %}
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Cummarize</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css')}}"/>
+		{% block head %}{% endblock %}
+	</head>
+	<body>
+		{% block body %}{% endblock %}
+		<footer>
+			<div class="footer">
+				<h1 class="reachUs">Reach Us</h1>
+				<div class="tagLine">
+					Cummarize. always happy to look for ways to improve your experience.
+					Dont forget to follow and send us your feedback to Cummarize. Your
+					comments and suggestions are greatly appreciated!
+				</div>
+				<div class="text-box">
+					<div class="text-01">feedback@Cummarize.com</div>
+					<div class="text-02">Please provide your feedback for Vibey</div>
+				</div>
+				<div class="text-box">
+					<div class="text-01">support@Cummarize.com</div>
+					<div class="text-02">
+						For help, please contact Cummarize Technical Support.
+					</div>
+				</div>
+				<div class="text-box">
+					<div class="text-01">press@Cummarize.com</div>
+					<div class="text-02">
+						For PR inquiries, please contact our PR Team.
+					</div>
+				</div>
+				<div class="text-box">
+					<div class="text-01">BD@Cummarize.com</div>
+					<div class="text-02">
+						For business inquiries, please contact our BD Team.
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
 </html>
