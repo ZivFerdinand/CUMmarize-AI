@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-{% extends 'base.html' %} {% block head %}
+{% extends 'base.html' %} 
+
+{% block head %}
 <link
 	rel="stylesheet"
 	href="{{ url_for('static', filename='css/audio.css')}}"
 />
-{% endblock %} {% block body %}
+{% endblock %} 
+
+{% block body %}
+<header id="hd">
+    <div class="navLogo">
+        <img src="../static/image/logo.png" alt="Cummarize" class="nav_logo"/>  
+    </div>
+    <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <nav class="nav-bar">
+        <ul>
+            <li><a id="home" class="inactive" href="/" >Home</a></li>
+            <li><a id="text" class="inactive" href="text">Text</a></li>
+            <li><a id="video" class="inactive" href="video">Video</a></li>
+            <li><a id="audio" class="active" href="audio">Audio</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="text-page">
+    <div class="leftRight">
+        <div class="text-summarizer">
+            <div class="title">
+                <div class="title-01">WELCOME TO CUMMARIZE</div>
+                <div class="title-02">Audio Summarizer</div>
+                <div class="title-01">Online Summarizer developed &amp supported</div>
+                <div class="title-01">by Bina Nusantara University</div>
+                <!-- <div class="form1">
+                    <form action="{{ url_for('text')}}" method="post">
+                    <input class ="textInput" type="text" name="url" placeholder="Paste here the link you want to summarize">
+                </div> -->
+				<div class="upload-audio">
+					<button class="audioButton" onclick="document.getElementById('fileUpload').click()"></button>
+					<input id="fileUpload" type="file" name="file" accept=".mp3,mp4" onchange="handleFileUpload()" style="display: none;">
+					<div class="loader"></div>
+					<div class="errorMSG">{{ error_msg }}</div>
+					<div style="align-items: center; display: flex; flex-direction: row; width: 100%; height: 100%; ">
+						<button id="urlSubmitButton" style="margin-right: 25px;" class = "buttonSubmit" value="url" name="button" type="submit">CUMMARIZE</button>
+						<div id="urlLoader" class="loader"></div>
+					</div>
+				</div>
+            </div>
+        </div>
+        <div class="text-image">
+            <img src="../static/image/welcome-image.png" alt="welcome-image" class="icon"/>
+        </div>
+    </div>
+</div>
+
 <div style="height: 50vh;">
 	<h1>Flask File Uploads Tutorial</h1>
 	<form method="POST" enctype="multipart/form-data">
@@ -14,4 +67,83 @@
 	</form>
 	<div class="loader"></div>
 </div>
+
+<script>
+    hamburger = document.querySelector(".hamburger");
+    hamburger.onclick = function () {
+        navBar = document.querySelector(".nav-bar")
+        navBar.classList.toggle("active");
+    }
+    let hdr = document.getElementById("hd");
+    window.addEventListener("scroll", (event) => {
+        let scroll = this.scrollY;
+        if(scroll == 0)
+        {   
+            if(hdr.classList.contains("hd-bg") == true)
+            {
+                hdr.classList.remove("hd-bg")
+            }
+        }
+        else
+        {
+            if(hdr.classList.contains("hd-bg") == false)
+            {
+                hdr.classList.add("hd-bg")
+            }
+        }
+    });
+    const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+    let home = document.getElementById("home");
+    let text = document.getElementById("text");
+    let audio = document.getElementById("audio");
+    let video = document.getElementById("video");
+
+    function disactivateClass() {
+        if (text.classList.contains("active") == true) {
+            text.classList.remove("active");
+            text.classList.add("inactive");
+            
+        }
+    }
+    function activateClass() {
+        if (text.classList.contains("inactive") == true) {
+            text.classList.add("active");
+            text.classList.remove("inactive");
+        }
+    }
+    home.addEventListener("mouseenter", () => {
+        disactivateClass();
+    })
+    home.addEventListener("mouseleave", () => {
+        activateClass();
+    })
+
+    audio.addEventListener("mouseenter", () => {
+        disactivateClass();
+    })
+    audio.addEventListener("mouseleave", () => {
+        activateClass();
+    })
+
+    video.addEventListener("mouseenter", () => {
+        disactivateClass();
+    })
+    video.addEventListener("mouseleave", () => {
+        activateClass();
+    })
+
+    let urlLoader = document.getElementById("urlLoader");
+    let urlSubmitButton = document.getElementById("urlSubmitButton");
+
+    urlSubmitButton.addEventListener("click", () => {
+        urlLoader.style.display = "flex";
+    })
+
+    let textLoader = document.getElementById("textLoader");
+    let textSubmitButton = document.getElementById("textSubmitButton");
+
+    textSubmitButton.addEventListener("click", () => {
+        textLoader.style.display = "flex";
+    })
+</script>
 {% endblock %}
