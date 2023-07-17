@@ -41,13 +41,18 @@
                     <input class ="textInput" type="text" name="url" placeholder="Paste here the link you want to summarize">
                 </div> -->
 				<div class="upload-audio">
-					<button class="audioButton" onclick="document.getElementById('fileUpload').click()"></button>
-					<input id="fileUpload" type="file" name="file" accept=".mp3,mp4" onchange="handleFileUpload()" style="display: none;">
-					<div class="loader"></div>
-					<div class="errorMSG">{{ error_msg }}</div>
-					<div style="align-items: center; display: flex; flex-direction: row; width: 100%; height: 100%; ">
-						<button id="urlSubmitButton" style="margin-right: 25px;" class = "buttonSubmit" value="url" name="button" type="submit">CUMMARIZE</button>
-						<div id="urlLoader" class="loader"></div>
+                    <form method="POST" enctype="multipart/form-data">
+                        {{form.hidden_tag()}}
+                        
+                        <div class="errorMSG">{{ error_msg }}</div>
+                        <div style="align-items: center; display: flex; flex-direction: row; width: 100%; height: fit-content; ">
+                            <label style="display: flex; flex-direction: row; align-items: center; justify-content: start;"><img src="../static/image/icon audio.png" style="margin-right: 75px; width: 75px; height: 75px;"><input type="file"  accept=".mp3" style="" {{form.file()}}</label>
+
+                            <input id="urlSubmitButton" style="margin-right: 25px;" class = "buttonSubmit"  value="CUMMARIZE" name="button" type="submit"></input>
+                            <div id="urlLoader" class="loader"></div>
+                        </div>
+                    </form>
+					
 					</div>
 				</div>
             </div>
@@ -58,15 +63,15 @@
     </div>
 </div>
 
-<div style="height: 50vh;">
-	<h1>Flask File Uploads Tutorial</h1>
-	<form method="POST" enctype="multipart/form-data">
-		{{form.hidden_tag()}}
+<!-- <div style="height: 50vh;"> -->
+	<!-- <h1>Flask File Uploads Tutorial</h1> -->
+	<!-- <form method="POST" enctype="multipart/form-data"> -->
+		<!-- {{form.hidden_tag()}} -->
 		<!-- {{form.file()}} -->
-		<input type="file" accept=".mp3,.mp4" {{form.file()}} {{form.submit()}}
-	</form>
-	<div class="loader"></div>
-</div>
+		<!-- <input type="file" accept=".mp3,.mp4" {{form.file()}} {{form.submit()}} -->
+	<!-- </form> -->
+	<!-- <div class="loader"></div> -->
+<!-- </div> -->
 
 <script>
     hamburger = document.querySelector(".hamburger");
@@ -99,16 +104,16 @@
     let video = document.getElementById("video");
 
     function disactivateClass() {
-        if (text.classList.contains("active") == true) {
-            text.classList.remove("active");
-            text.classList.add("inactive");
+        if (audio.classList.contains("active") == true) {
+            audio.classList.remove("active");
+            audio.classList.add("inactive");
             
         }
     }
     function activateClass() {
-        if (text.classList.contains("inactive") == true) {
-            text.classList.add("active");
-            text.classList.remove("inactive");
+        if (audio.classList.contains("inactive") == true) {
+            audio.classList.add("active");
+            audio.classList.remove("inactive");
         }
     }
     home.addEventListener("mouseenter", () => {
@@ -118,10 +123,10 @@
         activateClass();
     })
 
-    audio.addEventListener("mouseenter", () => {
+    text.addEventListener("mouseenter", () => {
         disactivateClass();
     })
-    audio.addEventListener("mouseleave", () => {
+    text.addEventListener("mouseleave", () => {
         activateClass();
     })
 
@@ -145,5 +150,12 @@
     textSubmitButton.addEventListener("click", () => {
         textLoader.style.display = "flex";
     })
+
+    function getFileName()
+    {
+        var x = document.getElementById('upload-input')
+        x.style.visibility = 'collapse'
+        document.getElementById('fileName').innerHTML = x.value.split('\\').pop()
+    }
 </script>
 {% endblock %}
