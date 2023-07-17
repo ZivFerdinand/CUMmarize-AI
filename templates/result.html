@@ -1,17 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-      <!-- Result Display-->
-  <section class="section section-solutions-about grey darken-2">
- <div class="container white-text">
+{% extends 'base.html' %}
+<!-- HEAD -->
+{% block head %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css')}}">
+{% endblock %}
+
+<!-- BODY -->
+{% block body %} 
+
+<header id="hd">
+    <div class="navLogo">
+        <img src="../static/image/logo.png" alt="Cummarize" class="nav_logo"/>  
+    </div>
+    <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <nav class="nav-bar">
+        <ul>
+            <li><a id="home" class="inactive" href="#" >Home</a></li>
+            <li><a id="text" class="inactive" href="text">Text</a></li>
+            <li><a id="video" class="inactive" href="video">Video</a></li>
+            <li><a id="audio" class="inactive" href="audio">Audio</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="result-page">
+  <div class="leftRight" style="justify-content: space-evenly;">
+      <div class="block">
+          <div class="title">Your Text</div>
+          <div class="text">
+          <div class="desc">
+            {{ctext}}
+          </div>
+          </div>
+          <div class="time">
+            Reading Time: {{ final_reading_time }} Minute
+          </div>
+      </div>
+     <div class="line"></div>
+      <div class="block">
+          <div class="title">Summarized</div>
+          <div class="text">
+          <div class="desc">
+            {{ final_summary }}
+          </div>
+        </div>
+        <div class="time">
+              Reading Time: {{ summary_reading_time }} Minute
+          </div>
+      </div>
+  </div>
+  
+    <!-- <section class="section section-solutions-about grey darken-2">
+        <div class="container white-text">
  
       <!--   Icon Section   -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col s12 m6">
           <div class="icon-block">
             <h2 class="center brown-text"><i class="material-icons">group</i></h2>
@@ -40,6 +86,9 @@
 
   
   </div>
-</section>
-</body>
-</html>
+</section> --> -->
+
+</div>
+ 
+</script>
+{% endblock %}
