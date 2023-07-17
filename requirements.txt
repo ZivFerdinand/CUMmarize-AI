@@ -1,0 +1,8 @@
+Flask==2.3.2
+Flask_WTF==1.1.1
+newspaper3k==0.2.8
+nltk==3.8.1
+openai_whisper==20230314
+spacy==3.6.0
+Werkzeug==2.3.6
+WTForms==3.0.1
