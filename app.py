@@ -30,10 +30,22 @@ def text():
             article.download()
             article.parse()
             article.nlp()
+
+            final_reading_time = readingTime(article.text)
+            final_summary = nltk_summarizer(article.text)
+            summary_reading_time = readingTime(article.summary)
+            end = time.time()
+            final_time = end-start
         except:
             return render_template('text.html', error_msg="Invalid Link Provided!")
         else:
-            return "Title : " + article.title + "<br>" + "Authors : " + str(article.authors) + "<br>" + "Publication Date : " + str(article.publish_date) + "<br> </br>" + "Summary : <br>" + article.summary
+            return render_template('result.html',
+                ctext=article.text,
+                final_summary=article.summary,
+                final_time=final_time,
+                final_reading_time=final_reading_time,
+                summary_reading_time=summary_reading_time
+                )
     elif request.method == 'POST' and request.form.get("button") == "rawtext":
         try:
             rawtext = request.form['rawtext']
@@ -74,7 +86,14 @@ def audio():
         
         model = whisper.load_model("base")
         result = model.transcribe(save_path)
-        return result["text"]
+        # return result["text"]
+        return render_template('result.html',
+                ctext=result["text"]
+                # final_summary='INI FINAL SUMMARY',
+                # final_time='INI TEXT READING TIME',
+                # final_reading_time='INI SUMMARY READING TIME',
+                # summary_reading_time='ITULAH'
+                )
     return render_template('audio.html', form=form)
 
 if __name__ == "__main__":

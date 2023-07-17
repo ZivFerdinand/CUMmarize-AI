@@ -12,7 +12,7 @@
 }
 
 .text-summarizer {
-	width: 100%;
+	width: 95%;
 	height: 100%;
 	display: flex;
 	justify-content: center;
@@ -87,6 +87,6 @@ form {
     flex-direction: row;
     justify-content: start;
     align-items: center;
-    width: 95%;
+    width: 90%;
     margin-top: 3%;
 }
