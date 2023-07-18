@@ -22,10 +22,10 @@
 .icon{
 	display: block;
 	position: relative;
-    margin-top: 13vh;
-    margin-right: 100px;
+    margin-top: calc(13vh + 80px) !important;
+    margin-right: 100px !important;
     /* width: 85%; */
-    height: 85%;
+    height: 85vh;
     z-index: 50;
     opacity: 85%;
 } 
@@ -38,6 +38,10 @@
 
 form {
 	height: 100%;
+}
+
+.text-image{
+	width: 50vw;
 }
 
 .textInput {
