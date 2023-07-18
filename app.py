@@ -110,6 +110,38 @@ def audio():
             )
     return render_template('audio.html', form=form)
 
+@app.route('/video', methods=['GET',"POST"])
+def video():  
+    try:
+        folder_clearance()
+    except:
+        os.mkdir('static/files')
+        folder_clearance()
+    
+    form = UploadFileForm()
+    if form.validate_on_submit():
+        start = time.time()
+        file = form.file.data # First grab the file
+        save_path = os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'],secure_filename(file.filename))
+        file.save(save_path) # Then save the file
+        
+        model = whisper.load_model("base")
+        result = model.transcribe(save_path)
+        # return result["text"]
+        final_reading_time = readingTime(result["text"])
+        final_summary = nltk_summarizer(result["text"])
+        summary_reading_time = readingTime(final_summary)
+        end = time.time()
+        final_time = end-start
+        return render_template('result.html',
+                ctext=result["text"],
+                final_summary=final_summary,
+                final_time=final_time,
+                final_reading_time=final_reading_time,
+                summary_reading_time=summary_reading_time
+            )
+    return render_template('video.html', form=form)
+
 if __name__ == "__main__":
     app.run(debug=True)
 

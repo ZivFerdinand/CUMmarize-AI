@@ -108,6 +108,9 @@ form {
     z-index: 50;
 }
 
+.formText::-webkit-scrollbar{
+	display: none;
+}
 .formText {
     margin-bottom: 25px;
     z-index: 50;
@@ -123,4 +126,5 @@ form {
 	font-family: "FontCummarize";
 	padding: 30px 45px;
 	font-size: 15pt;
+	scrollbar-width: none;
 }

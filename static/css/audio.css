@@ -24,8 +24,8 @@
 	position: relative;
     margin-top: calc(13vh + 80px) !important;
     margin-right: 100px !important;
-    /* width: 85%; */
-    height: 85vh;
+    width: 618px;
+    height: 561px;
     z-index: 50;
     opacity: 85%;
 } 
