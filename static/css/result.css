@@ -45,7 +45,7 @@
     font-family: "FontCummarize";
     font-size: 40px;
     color: #FFFFFF;
-    margin-left: 0;
+    margin-left: 0 !important;
     margin-bottom: 10px;
 }
 .line{
@@ -63,7 +63,7 @@
     padding: 10px;
     text-align: left;
     font-family: "FontCummarize";
-    font-size: 25px;
+    font-size: 15pt;
     color: #1B44C0;
     overflow-y: auto;
     overflow-x: hidden;
