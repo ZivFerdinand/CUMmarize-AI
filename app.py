@@ -46,6 +46,8 @@ def text():
             final_reading_time = readingTime(article.text)
             final_summary = nltk_summarizer(article.text)
             summary_reading_time = readingTime(article.summary)
+            if final_summary == "":
+                final_summary = "Your link can't be summarized!"
             end = time.time()
             final_time = end-start
         except:
@@ -64,6 +66,8 @@ def text():
             final_reading_time = readingTime(rawtext)
             final_summary = nltk_summarizer(rawtext)
             summary_reading_time = readingTime(final_summary)
+            if final_summary == "":
+                final_summary = "Your text can't be summarized!"
             end = time.time()
             final_time = end-start
         except:
@@ -99,6 +103,8 @@ def audio():
         final_reading_time = readingTime(result["text"])
         final_summary = nltk_summarizer(result["text"])
         summary_reading_time = readingTime(final_summary)
+        if final_summary == "":
+            final_summary = "Your video can't be summarized!"
         end = time.time()
         final_time = end-start
         return render_template('result.html',
@@ -131,6 +137,8 @@ def video():
         final_reading_time = readingTime(result["text"])
         final_summary = nltk_summarizer(result["text"])
         summary_reading_time = readingTime(final_summary)
+        if final_summary == "":
+            final_summary = "Your paragraph can't be summarized!"
         end = time.time()
         final_time = end-start
         return render_template('result.html',
