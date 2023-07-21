@@ -1,0 +1,96 @@
+.text-page {
+	position: static;
+	background-image: url(../image/welcome-background.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.text-summarizer {
+	width: 95%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.icon{
+	display: block;
+	position: relative;
+    margin-top: calc(13vh + 80px) !important;
+    margin-right: 100px !important;
+    width: 618px;
+    height: 561px;
+    z-index: 50;
+    opacity: 85%;
+} 
+
+.form1 {
+	margin-top: 2%;
+	margin-bottom: 2%;
+	height: 20%;
+}
+
+form {
+	height: 100%;
+}
+
+.text-image{
+	width: 50vw;
+}
+
+.textInput {
+	background: white;
+	border-radius: 10px;
+	border: none;
+	width: 78%;
+	height: 50px;
+	border: solid #1bd1fe;
+	text-align: left;
+    padding-left: 2%;
+    padding-right: 2%;
+	font-size: 12pt;
+	opacity: 100%;
+	font-family: "FontCummarize";
+}
+
+.errorMSG{
+	color: red;
+	font-size: 12pt;
+	font-family: "FontCummarize";
+	margin-bottom: 20px;
+	z-index: 50;
+}
+
+.buttonSubmit {
+	background: white;
+	border: none;
+	font-size: 12pt;
+	width: 160px;
+	height: 50px;
+	border-radius: 50px;
+    border: solid white;
+    cursor : pointer;
+	color: #1b44c0;
+	font-family: "FontCummarize";
+    z-index: 50;
+}
+.buttonSubmit:hover{
+    transition: .5s;
+    background: transparent;
+    color: white;
+}
+
+.upload-audio{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    width: 90%;
+    margin-top: 3%;
+}

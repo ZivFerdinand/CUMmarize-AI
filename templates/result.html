@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+<!-- HEAD -->
+{% block head %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css')}}">
+{% endblock %}
+
+<!-- BODY -->
+{% block body %} 
+
+<header id="hd">
+    <div class="navLogo">
+        <img src="../static/image/logo.png" alt="Cummarize" class="nav_logo"/>  
+    </div>
+    <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <nav class="nav-bar">
+        <ul>
+            <li><a id="home" class="inactive" href="/" >Home</a></li>
+            <li><a id="text" class="inactive" href="text">Text</a></li>
+            <li><a id="video" class="inactive" href="video">Video</a></li>
+            <li><a id="audio" class="inactive" href="audio">Audio</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="result-page">
+  <div class="leftRight" style="justify-content: space-evenly;">
+      <div class="block">
+          <div class="title">Your Text</div>
+          <div class="text">
+          <div class="desc">
+            {{ctext}}
+          </div>
+          </div>
+          <div class="time">
+            Reading Time: {{ final_reading_time }} Minute
+          </div>
+      </div>
+     <div class="line"></div>
+      <div class="block">
+          <div class="title">Summarized</div>
+          <div class="text">
+          <div class="desc">
+            {{ final_summary }}
+          </div>
+        </div>
+        <div class="time">
+              Reading Time: {{ summary_reading_time }} Minute
+          </div>
+      </div>
+  </div>
+  
+    
+</div>
+<script>
+  hamburger = document.querySelector(".hamburger");
+    hamburger.onclick = function () {
+        navBar = document.querySelector(".nav-bar")
+        navBar.classList.toggle("active");
+    }
+
+    let hdr = document.getElementById("hd");
+    window.addEventListener("scroll", (event) => {
+        let scroll = this.scrollY;
+        if(scroll == 0)
+        {   
+            if(hdr.classList.contains("hd-bg") == true)
+            {
+                hdr.classList.remove("hd-bg")
+            }
+        }
+        else
+        {
+            if(hdr.classList.contains("hd-bg") == false)
+            {
+                hdr.classList.add("hd-bg")
+            }
+        }
+    });
+    
+</script>
+{% endblock %}
